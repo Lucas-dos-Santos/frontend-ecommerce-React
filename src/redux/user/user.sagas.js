@@ -1,117 +1,46 @@
-import { takeLatest, put, all, call } from "redux-saga/effects";
 import {
-  signInSuccess,
-  signInFailure,
-  signOutSuccess,
-  signOutFailure,
-  signUpSuccess,
-  signUpFailure,
-} from "./user.actions";
-import UserActionTypes from "./user.types";
-import {
-  auth,
-  googleProvider,
-  createUserProfileDocument,
-  getCurrentUser,
-} from "../../firebase/firebase.utils";
+  put, call, all, takeLatest,
+} from 'redux-saga/effects';
+import { toast } from 'react-toastify';
+import * as actions from './user.actions';
+import UserActionTypes from './user.types';
+import axios from '../../services/axios';
 
-export function* getSnapshotFromUserAuth(userAuth, additionalData) {
+export function* loginRequest({ payload }) {
   try {
-    const userRef = yield call(
-      createUserProfileDocument,
-      userAuth,
-      additionalData
-    );
-    const userSnapshot = yield userRef.get();
-    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-  } catch (error) {
-    yield put(signInFailure(error));
+    const response = yield call(axios.post, 'auth/sign_in', payload);
+    yield put(actions.loginSuccess({ ...response.data }));
+
+    toast.success('Você fez login');
+
+    axios.defaults.headers.access_token = response.headers['access-token'];
+    axios.defaults.headers.client = response.headers.client;
+    axios.defaults.headers.uid = response.headers.uid;
+  } catch (e) {
+    toast.error('Usuário ou senha inválido.');
+
+    yield put(actions.loginFailure());
   }
 }
 
-export function* signInWithGoogle() {
+export function* registerRequest({ payload }) {
   try {
-    const { user } = yield auth.signInWithPopup(googleProvider);
-    yield getSnapshotFromUserAuth(user);
-  } catch (error) {
-    yield put(signInFailure(error));
+    const response = yield call(axios.post, 'auth/sign_in', payload);
+    yield put(actions.loginSuccess({ ...response.data }));
+
+    toast.success('Você fez login');
+
+    axios.defaults.headers.access_token = response.headers['access-token'];
+    axios.defaults.headers.client = response.headers.client;
+    axios.defaults.headers.uid = response.headers.uid;
+  } catch (e) {
+    toast.error('Usuário ou senha inválido.');
+
+    yield put(actions.loginFailure());
   }
 }
 
-export function* signInWithEmail({ payload: { email, password } }) {
-  try {
-    const { user } = yield auth.signInWithEmailAndPassword(email, password);
-    yield getSnapshotFromUserAuth(user);
-  } catch (error) {
-    yield put(signInFailure(error));
-  }
-}
-
-export function* onGoogleSignInStart() {
-  yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
-}
-
-export function* onEmailSignInStart() {
-  yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
-}
-
-export function* isUserAuthenticated() {
-  try {
-    const userAuth = yield getCurrentUser();
-
-    if (!userAuth) return;
-    yield getSnapshotFromUserAuth(userAuth);
-  } catch (error) {
-    yield put(signInFailure(error));
-  }
-}
-
-export function* onCheckUserSession() {
-  yield takeLatest(UserActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
-}
-
-export function* signOut() {
-  try {
-    yield auth.signOut();
-    yield put(signOutSuccess());
-  } catch (error) {
-    yield put(signOutFailure(error));
-  }
-}
-
-export function* onSignOutStart() {
-  yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
-}
-
-export function* signUp({ payload: { email, password, displayName } }) {
-  try {
-    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-
-    yield put(signUpSuccess({ user, additionalData: { displayName } }));
-  } catch (error) {
-    yield put(signUpFailure(error));
-  }
-}
-
-export function* signInAfterSignUp({ payload: { user, additionalData } }) {
-  yield getSnapshotFromUserAuth(user, additionalData);
-}
-
-export function* onSignUpStart() {
-  yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
-}
-
-export function* onSignUpSuccess() {
-  yield takeLatest(UserActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
-}
-
-export function* userSagas() {
-  yield all([
-    call(onGoogleSignInStart),
-    call(onEmailSignInStart),
-    call(onCheckUserSession),
-    call(onSignOutStart),
-    call(onSignUpStart),
-    call(onSignUpSuccess),
-  ]);
-}
+export default all([
+  takeLatest(UserActionTypes.LOGIN_REQUEST, loginRequest),
+  takeLatest(UserActionTypes.REGISTER_REQUEST, registerRequest),
+]);

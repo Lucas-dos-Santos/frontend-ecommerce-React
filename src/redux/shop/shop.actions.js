@@ -1,4 +1,4 @@
-import ShopActionsType from "./shop.types";
+import ShopActionsType from './shop.types';
 
 export const fetchCollectionsStart = () => ({
   type: ShopActionsType.FETCH_COLLECTIONS_START,

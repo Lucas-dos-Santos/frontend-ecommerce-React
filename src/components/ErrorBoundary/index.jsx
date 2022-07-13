@@ -1,5 +1,5 @@
-import React from "react";
-import * as S from "./style";
+import React from 'react';
+import * as S from './style';
 
 class ErrorBoundary extends React.Component {
   constructor() {
@@ -19,7 +19,8 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasErrored) {
+    const { state, props } = this;
+    if (state.hasErrored) {
       return (
         <S.ErrorImageOverlay>
           <S.ErrorImageContainer imageUrl="https://i.imgur.com/lKJiT77.png" />
@@ -33,7 +34,7 @@ class ErrorBoundary extends React.Component {
       );
     }
 
-    return this.props.children;
+    return props.children;
   }
 }
 

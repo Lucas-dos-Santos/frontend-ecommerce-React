@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import FormInput from "../FormInput";
-import CustomButton from "../CustomButton";
-import { useDispatch } from "react-redux";
-import "./style.scss";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import FormInput from '../FormInput';
+import CustomButton from '../CustomButton';
+import './style.scss';
 import {
-  googleSignInStart,
-  emailSignInStart,
-} from "../../redux/user/user.actions";
+  loginRequest,
+} from '../../redux/user/user.actions';
 
-const SignIn = () => {
+function SignIn() {
   const dispatch = useDispatch();
 
   const [userCredentials, setUserCredentials] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const { email, password } = userCredentials;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(emailSignInStart({ email, password }));
+    dispatch(loginRequest({ email, password }));
   };
 
   const handleChange = (event) => {
@@ -51,7 +50,6 @@ const SignIn = () => {
         <div className="buttons">
           <CustomButton type="submit">sign in</CustomButton>
           <CustomButton
-            onClick={() => dispatch(googleSignInStart())}
             type="button"
             isGoogleSignIn
           >
@@ -61,6 +59,6 @@ const SignIn = () => {
       </form>
     </div>
   );
-};
+}
 
 export default SignIn;

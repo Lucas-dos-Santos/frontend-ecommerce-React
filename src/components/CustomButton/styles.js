@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 const getButtonStyles = (props) => {
   if (props.isGoogleSignIn) return googleSignInStyles;

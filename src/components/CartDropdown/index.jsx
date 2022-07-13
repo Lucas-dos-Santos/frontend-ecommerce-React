@@ -1,13 +1,13 @@
-import React from "react";
-import CustomButton from "../CustomButton";
-import { useSelector, useDispatch } from "react-redux";
-import { selectCartItems } from "../../redux/cart/cart.selectors";
-import { useHistory } from "react-router-dom";
-import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import CartItem from "../CartItem";
-import "./styles.scss";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import CustomButton from '../CustomButton';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import CartItem from '../CartItem';
+import './styles.scss';
 
-const CartDropdown = () => {
+function CartDropdown() {
   const cartItems = useSelector(selectCartItems);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const CartDropdown = () => {
       </div>
       <CustomButton
         onClick={() => {
-          history.push("/checkout");
+          history.push('/checkout');
           dispatch(toggleCartHidden());
         }}
       >
@@ -31,6 +31,6 @@ const CartDropdown = () => {
       </CustomButton>
     </div>
   );
-};
+}
 
 export default CartDropdown;

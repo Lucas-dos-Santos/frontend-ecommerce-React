@@ -1,10 +1,10 @@
-import React from "react";
-import "./styles.scss";
-import { useSelector } from "react-redux";
-import CollectionPreview from "../CollectionPreview";
-import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
+import React from 'react';
+import './styles.scss';
+import { useSelector } from 'react-redux';
+import CollectionPreview from '../CollectionPreview';
+import { selectCollectionsForPreview } from '../../redux/shop/shop.selectors';
 
-const CollectionsOverview = () => {
+function CollectionsOverview() {
   const collections = useSelector(selectCollectionsForPreview);
   return (
     <div className="collections-overview">
@@ -13,6 +13,6 @@ const CollectionsOverview = () => {
       ))}
     </div>
   );
-};
+}
 
 export default CollectionsOverview;

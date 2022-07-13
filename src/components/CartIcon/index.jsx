@@ -1,11 +1,11 @@
-import React from "react";
-import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
-import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
-import { useDispatch, useSelector } from "react-redux";
-import "./styles.scss";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
+import './styles.scss';
 
-const CartIcon = () => {
+function CartIcon() {
   const itemsCount = useSelector(selectCartItemsCount);
 
   const dispatch = useDispatch();
@@ -15,6 +15,6 @@ const CartIcon = () => {
       <span className="item-count">{itemsCount}</span>
     </div>
   );
-};
+}
 
 export default CartIcon;

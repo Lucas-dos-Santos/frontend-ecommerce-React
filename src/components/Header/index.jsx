@@ -1,17 +1,23 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
-import CartIcon from "../../components/CartIcon";
-import CartDropdown from "../CartDropdown";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { signOutStart } from "../../redux/user/user.actions";
-import * as S from "./styles";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { ReactComponent as Logo } from '../../assets/crown.svg';
+import CartIcon from '../CartIcon';
+import CartDropdown from '../CartDropdown';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import * as S from './styles';
+import { signOut } from '../../redux/user/user.actions';
 
-const Header = () => {
+function Header() {
   const currentUser = useSelector(selectCurrentUser);
   const hidden = useSelector(selectCartHidden);
   const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    toast.success('Você fez logout com successo!');
+    dispatch(signOut());
+  };
 
   return (
     <S.HeaderContainer>
@@ -25,7 +31,7 @@ const Header = () => {
           <S.OptionLink
             as="div"
             aria-hidden="true"
-            onClick={() => dispatch(signOutStart())}
+            onClick={handleSignOut}
           >
             SIGN OUT
           </S.OptionLink>
@@ -37,6 +43,6 @@ const Header = () => {
       {hidden ? null : <CartDropdown />}
     </S.HeaderContainer>
   );
-};
+}
 
 export default Header;

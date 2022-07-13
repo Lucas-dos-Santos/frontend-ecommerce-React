@@ -1,11 +1,11 @@
-import React from "react";
-import "./style.scss";
-import MenuItem from "../MenuItem";
-import {} from "../../redux/directory/directory.reducer";
-import { selectDirectorySections } from "../../redux/directory/directory.selectors";
-import { useSelector } from "react-redux";
+import React from 'react';
+import './style.scss';
+import { useSelector } from 'react-redux';
+import MenuItem from '../MenuItem';
+import {} from '../../redux/directory/directory.reducer';
+import { selectDirectorySections } from '../../redux/directory/directory.selectors';
 
-const Directory = () => {
+function Directory() {
   const sections = useSelector(selectDirectorySections);
   return (
     <div className="directory-menu">
@@ -14,6 +14,6 @@ const Directory = () => {
       ))}
     </div>
   );
-};
+}
 
 export default Directory;

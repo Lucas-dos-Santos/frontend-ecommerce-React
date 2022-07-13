@@ -1,16 +1,18 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   clearItemFromCart,
   addItem,
   removeItem,
-} from "../../redux/cart/cart.actions";
-import "./styles.scss";
+} from '../../redux/cart/cart.actions';
+import './styles.scss';
 
-const CheckoutItem = ({ cartItem }) => {
+function CheckoutItem({ cartItem }) {
   const dispatch = useDispatch();
 
-  const { imageUrl, name, quantity, price } = cartItem;
+  const {
+    imageUrl, name, quantity, price,
+  } = cartItem;
   return (
     <div className="checkout-item">
       <div className="image-container">
@@ -35,6 +37,6 @@ const CheckoutItem = ({ cartItem }) => {
       </div>
     </div>
   );
-};
+}
 
 export default CheckoutItem;

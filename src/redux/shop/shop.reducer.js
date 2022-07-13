@@ -1,4 +1,4 @@
-import ShopActionsType from "./shop.types";
+import ShopActionsType from './shop.types';
 
 const INITIAL_STATE = {
   collections: null,
