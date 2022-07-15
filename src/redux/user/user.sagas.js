@@ -24,19 +24,20 @@ export function* loginRequest({ payload }) {
 }
 
 export function* registerRequest({ payload }) {
+  const {
+    displayName, email, password, confirmPassword,
+  } = payload;
+
   try {
-    const response = yield call(axios.post, 'auth/sign_in', payload);
-    yield put(actions.loginSuccess({ ...response.data }));
-
-    toast.success('Você fez login');
-
-    axios.defaults.headers.access_token = response.headers['access-token'];
-    axios.defaults.headers.client = response.headers.client;
-    axios.defaults.headers.uid = response.headers.uid;
+    yield call(axios.post, '/auth', {
+      email,
+      password,
+      confirmPassword,
+    });
+    toast.success('Email enviado para o email cadastrado, clique no link para confirmar sua conta');
+    yield put(actions.registerCreatedSuccess({ displayName, email, password }));
   } catch (e) {
-    toast.error('Usuário ou senha inválido.');
-
-    yield put(actions.loginFailure());
+    yield put(actions.registerFailure());
   }
 }
 

@@ -8,9 +8,7 @@ function CollectionsOverview() {
   const collections = useSelector(selectCollectionsForPreview);
   return (
     <div className="collections-overview">
-      {collections.map(({ id, ...otherCollectionProps }) => (
-        <CollectionPreview key={id} {...otherCollectionProps} />
-      ))}
+      <CollectionPreview collections={collections} />
     </div>
   );
 }

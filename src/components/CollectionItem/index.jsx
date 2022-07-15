@@ -12,17 +12,16 @@ import {
   PriceContainer,
 } from './style';
 
-function CollectionItem({ item }) {
-  const { name, price, imageUrl } = item;
-
+function CollectionItem({ item, addItemToCart }) {
+  const { name, price } = item;
   return (
     <CollectionItemContainer>
-      <BackgroundImage className="image" imageUrl={imageUrl} />
+      <BackgroundImage className="image" imageUrl={item.image_url} />
       <CollectionFooterContainer>
         <NameContainer>{name}</NameContainer>
         <PriceContainer>{price}</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton onClick={() => addItem(item)} inverted>
+      <AddButton onClick={() => addItemToCart(item)} inverted>
         Add to cart
       </AddButton>
     </CollectionItemContainer>
@@ -30,7 +29,7 @@ function CollectionItem({ item }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
+  addItemToCart: (item) => dispatch(addItem(item)),
 });
 
 export default connect(null, mapDispatchToProps)(CollectionItem);

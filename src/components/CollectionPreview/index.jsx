@@ -2,12 +2,11 @@ import React from 'react';
 import './style.scss';
 import CollectionItem from '../CollectionItem';
 
-function CollectionPreview({ title, items }) {
+function CollectionPreview({ collections }) {
   return (
     <div className="collection-preview">
-      <h1 className="title">{title.toUpperCase()}</h1>
       <div className="preview">
-        {items
+        {collections
           .filter((item, index) => index < 4)
           .map((item) => (
             <CollectionItem key={item.id} item={item} />

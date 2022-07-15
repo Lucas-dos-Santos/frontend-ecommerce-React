@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FormInput from '../FormInput';
 import CustomButton from '../CustomButton';
-import { loginRequest } from '../../redux/user/user.actions';
+import { registerRequest } from '../../redux/user/user.actions';
 import './styles.scss';
 
 function SignUp() {
@@ -28,7 +28,9 @@ function SignUp() {
       console.log("password don't match");
       return;
     }
-    dispatch(loginRequest({ email, password, displayName }));
+    dispatch(registerRequest({
+      email, password, confirmPassword, displayName,
+    }));
   };
 
   return (
