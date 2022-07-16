@@ -1,14 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import CheckoutItem from "../../components/CheckoutItem";
-import StripeButton from "../../components/StripeButton";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import CheckoutItem from '../../components/CheckoutItem';
+import StripeButton from '../../components/StripeButton';
 import {
   selectCartItems,
   selectCartTotal,
-} from "../../redux/cart/cart.selectors";
-import * as S from "./styles";
+} from '../../redux/cart/cart.selectors';
+import * as S from './styles';
 
-const CheckoutPage = () => {
+function CheckoutPage() {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
@@ -35,7 +35,10 @@ const CheckoutPage = () => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <S.TotalContainer>
-        <span>TOTAL: ${cartTotal}</span>
+        <span>
+          TOTAL: $
+          {cartTotal}
+        </span>
       </S.TotalContainer>
       <S.CardWarning>
         *Please use the following test credit card for payments*
@@ -46,6 +49,6 @@ const CheckoutPage = () => {
       <StripeButton price={cartTotal} />
     </S.CheckoutContainer>
   );
-};
+}
 
 export default CheckoutPage;

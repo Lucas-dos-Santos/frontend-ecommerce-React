@@ -8,6 +8,7 @@ import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import * as S from './styles';
 import { signOut } from '../../redux/user/user.actions';
+import { clearCart } from '../../redux/cart/cart.actions';
 
 function Header() {
   const currentUser = useSelector(selectCurrentUser);
@@ -15,8 +16,9 @@ function Header() {
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    toast.success('Você fez logout com successo!');
+    dispatch(clearCart());
     dispatch(signOut());
+    toast.success('Você fez logout com successo!');
   };
 
   return (

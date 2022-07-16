@@ -1,14 +1,13 @@
-import React from "react";
-import StripeCheckout from "react-stripe-checkout";
+import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 
-const StripeButton = ({ price }) => {
+function StripeButton({ price }) {
   const priceForStripe = price * 100;
-  const publishableKey =
-    "pk_test_51KHhcRIkwGvfmDOcjdbHqUXK0PiH4tTOBGoeEfRAtGd2sEBYMpquBsZXZpiE2tZzYvHgGsDJNnhBowZoiEHcrLls00kNaBjHti";
+  const publishableKey = 'pk_test_51KHhcRIkwGvfmDOcjdbHqUXK0PiH4tTOBGoeEfRAtGd2sEBYMpquBsZXZpiE2tZzYvHgGsDJNnhBowZoiEHcrLls00kNaBjHti';
 
   const onToken = (token) => {
     console.log(token);
-    alert("payment successful");
+    alert('payment successful');
   };
   return (
     <StripeCheckout
@@ -24,5 +23,5 @@ const StripeButton = ({ price }) => {
       stripeKey={publishableKey}
     />
   );
-};
+}
 export default StripeButton;
