@@ -5,8 +5,8 @@ import { selectItem } from '../../redux/shop/shop.selectors';
 import Item from '../../components/Item';
 
 function ItemPage() {
-  const { itemId } = useParams();
-  const item = useSelector(selectItem(itemId));
+  const { itemName } = useParams();
+  const item = useSelector(selectItem(itemName));
   return (
     <Item item={item} />
   );

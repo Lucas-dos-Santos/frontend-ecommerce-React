@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import parameterize from '../../services/utils';
 
 const selectShop = (state) => state.shop;
 
@@ -12,9 +13,9 @@ export const selectCollectionsForPreview = createSelector(
   (collections) => (collections ? Object.keys(collections).map((key) => collections[key]) : []),
 );
 
-export const selectItem = (itemId) => createSelector(
+export const selectItem = (itemName) => createSelector(
   [selectShopCollections],
-  (collections) => (collections ? collections.find((i) => i.id == itemId) : null),
+  (collections) => (collections ? collections.find((i) => parameterize(i.name) == itemName) : null),
 );
 
 export const selectIsCollectionFetching = createSelector(

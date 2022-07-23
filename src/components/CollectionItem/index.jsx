@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/cart/cart.actions';
 import ScrollRevealContainer from '../ScrollRevealContainer';
+import parameterize from '../../services/utils';
 import {
   CollectionItemContainer,
   CollectionFooterContainer,
@@ -13,11 +14,11 @@ import {
 
 function CollectionItem({ item, addItemToCart }) {
   const {
-    id, name, price, imageUrl,
+    name, price, imageUrl,
   } = item;
   return (
     <ScrollRevealContainer>
-      <CollectionItemContainer to={`shop/${id}`}>
+      <CollectionItemContainer to={`shop/${parameterize(name)}`}>
         <BackgroundImage className="image" imageUrl={imageUrl} />
         <CollectionFooterContainer>
           <NameContainer>{name}</NameContainer>

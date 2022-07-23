@@ -22,7 +22,7 @@ function ShopPage({ match }) {
           component={ColletionsOverviewContainer}
         />
         <Route
-          path={`${match.path}/:itemId`}
+          path={`${match.path}/:itemName`}
           component={ItemPageContainer}
         />
       </Suspense>

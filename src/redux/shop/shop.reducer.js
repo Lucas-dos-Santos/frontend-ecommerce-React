@@ -1,7 +1,16 @@
 import ShopActionsType from './shop.types';
 
 const INITIAL_STATE = {
-  collections: [],
+  collections: [
+    {
+      id: 1,
+      name: 'chokers',
+      description: '',
+      quantity: null,
+      imageUrl: 'https://bucketfree-images.s3.us-east-2.amazonaws.com/uploads/images/1/chokers.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXL2VR5LY5WTYAJPX%2F20220723%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20220723T002640Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a74d4f28af65d59cf15a8dc4a2920ae9297f2a7b8c82b40a5a9a59fc53226639',
+      price: 'R$19.90',
+    },
+  ],
   isFetching: false,
   errorMessage: undefined,
 };
@@ -17,7 +26,6 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        collections: action.payload,
       };
     case ShopActionsType.FETCH_COLLECTIONS_FAILURE:
       return {
