@@ -1,26 +1,31 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import CustomButton from '../CustomButton';
 
-export const CollectionItemContainer = styled(Link)`
-  width: 21vw;
-  display: flex;
-  flex-direction: column;
-  height: 350px;
-  align-items: center;
-  position: relative;
-  margin-bottom: 30px;
+export const Images = styled.div`
+  width: 10%;
+  height: 400px;
+`;
+export const MiniImage = styled.div`
+  transition: transform 1s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+`;
 
-  &:hover {
-    .image {
-      opacity: 0.8;
-    }
-    button {
-      opacity: 0.85;
-      display: flex;
-    }
-    border: 1px solid black;
-  }
+export const ItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: row;
+`;
+
+export const ImageContainer = styled.div`
+  width: 50%;
+  height: 400px;
+  overflow: hidden;
 
   @media screen and (max-width: 800px) {
     width: 40vw;
@@ -53,23 +58,26 @@ export const AddButton = styled(CustomButton)`
 
 export const BackgroundImage = styled.div`
   width: 100%;
-  height: 95%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-export const CollectionFooterContainer = styled.div`
-  width: 100%;
+export const SideRightContainer = styled.div`
+  width: 40%;
+  height: 400px;
   display: flex;
+  padding: 10px;
   justify-content: space-between;
   font-size: 18px;
 `;
 
 export const NameContainer = styled.span`
-  margin: 10px 10px;
+  width: 100%;
+  font-size: 40px;
+  line-height: 20px;
 `;
 
 export const PriceContainer = styled.span`
-  margin: 10px 10px;
 `;

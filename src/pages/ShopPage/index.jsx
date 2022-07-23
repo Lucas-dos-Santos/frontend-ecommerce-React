@@ -5,7 +5,7 @@ import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 import Spinner from '../../components/Spinner';
 
 const ColletionsOverviewContainer = lazy(() => import('../../components/CollectionsOverviewContainer'));
-const CollectionPageContainer = lazy(() => import('../../components/CollectionPageContainer'));
+const ItemPageContainer = lazy(() => import('../../components/ItemPageContainer'));
 
 function ShopPage({ match }) {
   const dispatch = useDispatch();
@@ -22,8 +22,8 @@ function ShopPage({ match }) {
           component={ColletionsOverviewContainer}
         />
         <Route
-          path={`${match.path}/:collectionId`}
-          component={CollectionPageContainer}
+          path={`${match.path}/:itemId`}
+          component={ItemPageContainer}
         />
       </Suspense>
     </div>

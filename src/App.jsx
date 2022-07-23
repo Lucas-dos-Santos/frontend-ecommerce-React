@@ -7,6 +7,7 @@ import { GlobalStyle } from './global.styles';
 import Spinner from './components/Spinner';
 import ErrorBoundary from './components/ErrorBoundary';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import WhatsApp from './components/WhatsApp';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer autoClose={3000} className="toast-container" />
+      <WhatsApp />
       <GlobalStyle />
       <Header />
       <Switch>

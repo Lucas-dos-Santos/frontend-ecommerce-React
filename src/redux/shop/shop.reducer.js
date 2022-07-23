@@ -1,7 +1,7 @@
 import ShopActionsType from './shop.types';
 
 const INITIAL_STATE = {
-  collections: null,
+  collections: [],
   isFetching: false,
   errorMessage: undefined,
 };
