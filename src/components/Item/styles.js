@@ -7,7 +7,7 @@ export const Images = styled.div`
 `;
 export const MiniImage = styled.div`
   transition: transform 1s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-  width: 100px;
+  width: 115px;
   height: 100px;
   background-size: cover;
   background-position: center;
@@ -43,17 +43,6 @@ export const ImageContainer = styled.div`
 
 export const AddButton = styled(CustomButton)`
   width: 80%;
-  opacity: 0.7;
-  position: absolute;
-  top: 220px;
-  display: none;
-
-  @media screen and (max-width: 800px) {
-    display: block;
-    opacity: 0.9;
-    min-width: unset;
-    padding: 0 10px;
-  }
 `;
 
 export const BackgroundImage = styled.div`
@@ -68,16 +57,19 @@ export const SideRightContainer = styled.div`
   width: 40%;
   height: 400px;
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  padding: 0 10px;
   justify-content: space-between;
+  align-items: center;
   font-size: 18px;
 `;
 
 export const NameContainer = styled.span`
   width: 100%;
-  font-size: 40px;
-  line-height: 20px;
+  font-size: 30px;
+  text-align: center;
 `;
 
 export const PriceContainer = styled.span`
+  font-size: 24px;
 `;

@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles.scss';
 
-function CartItem({
+function WishListItem({
   item: {
     imageUrl, price, name, quantity,
   },
 }) {
   return (
-    <div className="cart-item">
+    <div className="wish-item">
       <img src={imageUrl} alt={name} />
       <div className="item-details">
         <span className="name">{name}</span>
@@ -22,4 +22,4 @@ function CartItem({
   );
 }
 
-export default React.memo(CartItem);
+export default React.memo(WishListItem);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../../redux/cart/cart.actions';
+import { addItemToCart } from '../../redux/cart/cart.actions';
 import ScrollRevealContainer from '../ScrollRevealContainer';
 import parameterize from '../../services/utils';
 import {
@@ -12,7 +12,7 @@ import {
   PriceContainer,
 } from './style';
 
-function CollectionItem({ item, addItemToCart }) {
+function CollectionItem({ item, addItem }) {
   const {
     name, price, imageUrl,
   } = item;
@@ -24,7 +24,7 @@ function CollectionItem({ item, addItemToCart }) {
           <NameContainer>{name}</NameContainer>
           <PriceContainer>{price}</PriceContainer>
         </CollectionFooterContainer>
-        <AddButton onClick={() => addItemToCart(item)} inverted>
+        <AddButton onClick={() => addItem(item)} inverted>
           Add to cart
         </AddButton>
       </CollectionItemContainer>
@@ -33,7 +33,7 @@ function CollectionItem({ item, addItemToCart }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addItemToCart: (item) => dispatch(addItem(item)),
+  addItem: (item) => dispatch(addItemToCart(item)),
 });
 
 export default connect(null, mapDispatchToProps)(CollectionItem);
