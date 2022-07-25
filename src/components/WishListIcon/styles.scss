@@ -7,8 +7,34 @@
   justify-content: center;
   cursor: pointer;
 
+  svg path {
+    fill: black !important;
+  }
+
+  svg g {
+    fill: black !important;
+  }
+
+  svg circle {
+    fill: black !important;
+  }
+
   .heart-icon {
     width: 24px;
     height: 24px;
+  }
+}
+
+.wishlist-icon:hover {
+  svg path {
+    fill: rgb(255, 94, 91) !important;
+  }
+
+  svg g {
+    fill: rgb(255, 94, 91) !important;
+  }
+
+  svg circle {
+    fill: rgb(255, 94, 91) !important;
   }
 }

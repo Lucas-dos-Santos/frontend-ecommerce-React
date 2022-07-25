@@ -3,7 +3,7 @@ import './styles.scss';
 
 function WishListItem({
   item: {
-    imageUrl, price, name, quantity,
+    imageUrl, name,
   },
 }) {
   return (
@@ -11,12 +11,6 @@ function WishListItem({
       <img src={imageUrl} alt={name} />
       <div className="item-details">
         <span className="name">{name}</span>
-        <span className="price">
-          {quantity}
-          {' '}
-          x R$
-          {price.toFixed(2)}
-        </span>
       </div>
     </div>
   );

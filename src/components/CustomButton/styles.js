@@ -2,8 +2,9 @@ import styled, { css } from 'styled-components';
 
 const getButtonStyles = (props) => {
   if (props.isGoogleSignIn) return googleSignInStyles;
-
-  return props.inverted ? invertedButtonStyles : buttonStyles;
+  if (props.wishlist) return wishlistStyles;
+  if (props.inverted) return invertedButtonStyles;
+  return buttonStyles;
 };
 
 export const CustomButtonContainer = styled.button`
@@ -44,6 +45,26 @@ export const googleSignInStyles = css`
   &:hover {
     background-color: #357ae8;
     border: none;
+  }
+`;
+
+export const wishlistStyles = css`
+  background: none;
+  color: rgb(255, 94, 91);
+  padding: 0;
+  width: 250px !important;
+  text-transform: none;
+
+  svg path {
+    fill: rgb(255, 94, 91);
+  }
+
+  &:hover {
+    color: black;
+
+    svg path {
+      fill: black;
+    }
   }
 `;
 

@@ -9,6 +9,7 @@ export const MiniImage = styled.div`
   transition: transform 1s cubic-bezier(0.25, 0.45, 0.45, 0.95);
   width: 115px;
   height: 100px;
+  margin-bottom: 10px;
   background-size: cover;
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
@@ -42,7 +43,22 @@ export const ImageContainer = styled.div`
 `;
 
 export const AddButton = styled(CustomButton)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80%;
+
+  svg {
+    margin: 0 10px;
+    width: 20px;
+    fill: white;
+  }
+
+  &:hover {
+    svg {
+      fill: black;
+    }
+  }
 `;
 
 export const BackgroundImage = styled.div`
