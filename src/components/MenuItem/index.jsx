@@ -10,7 +10,7 @@ import {
 } from './style';
 
 function MenuItem({
-  title, imageUrl, size, history, linkUrl, match,
+  title, images, size, history, linkUrl, match,
 }) {
   return (
     <MenuItemContainer
@@ -19,7 +19,7 @@ function MenuItem({
     >
       <BackgroundImageContainer
         className="background-image"
-        imageUrl={imageUrl}
+        images={images}
       />
       <ContentContainer className="content">
         <ContentTitle>{title.toUpperCase()}</ContentTitle>

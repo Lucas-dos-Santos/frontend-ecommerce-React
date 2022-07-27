@@ -8,6 +8,7 @@ import Spinner from './components/Spinner';
 import ErrorBoundary from './components/ErrorBoundary';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import WhatsApp from './components/WhatsApp';
+import WishListPage from './pages/WishListPage';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />
+            <Route exact path="/wishlist" component={WishListPage} />
             <Route
               path="/signin"
               render={() => (currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />)}

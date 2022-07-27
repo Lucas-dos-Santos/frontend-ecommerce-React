@@ -11,7 +11,7 @@ export const ErrorImageOverlay = styled.div`
 
 export const ErrorImageContainer = styled.div`
   display: inline-block;
-  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+  background-image: ${({ images }) => `url(${images})`};
   background-size: cover;
   background-position: center;
   width: 40vh;

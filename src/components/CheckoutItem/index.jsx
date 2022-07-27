@@ -11,19 +11,19 @@ function CheckoutItem({ cartItem }) {
   const dispatch = useDispatch();
 
   const {
-    imageUrl, name, quantity, price,
+    images, name, cartQuantity, price,
   } = cartItem;
   return (
     <div className="checkout-item">
       <div className="image-container">
-        <img src={imageUrl} alt="item" />
+        <img src={images} alt="item" />
       </div>
       <span className="name">{name}</span>
       <span className="quantity">
         <div className="arrow" onClick={() => dispatch(removeItemFromCart(cartItem))}>
           &#10094;
         </div>
-        <span className="value">{quantity}</span>
+        <span className="value">{cartQuantity}</span>
         <div className="arrow" onClick={() => dispatch(addItemToCart(cartItem))}>
           &#10095;
         </div>

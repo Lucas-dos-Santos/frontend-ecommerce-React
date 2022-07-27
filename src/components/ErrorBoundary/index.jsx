@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
     if (state.hasErrored) {
       return (
         <S.ErrorImageOverlay>
-          <S.ErrorImageContainer imageUrl="https://i.imgur.com/lKJiT77.png" />
+          <S.ErrorImageContainer images="https://i.imgur.com/lKJiT77.png" />
           <S.ErrorImageText>
             A Dog Ate this Page!! Your dog is cute but honestly a menace. Where
             are my shoes? Where is my graduation certificate? Where is the

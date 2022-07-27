@@ -12,20 +12,19 @@ export const MiniImage = styled.div`
   margin-bottom: 10px;
   background-size: cover;
   background-position: center;
-  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+  background-image: ${({ images }) => `url(${images})`};
 `;
 
 export const ItemContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
+  height: 100%;
   flex-direction: row;
 `;
 
 export const ImageContainer = styled.div`
   width: 50%;
-  height: 400px;
+  height: 430px;
   overflow: hidden;
 
   @media screen and (max-width: 800px) {
@@ -66,7 +65,7 @@ export const BackgroundImage = styled.div`
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+  background-image: ${({ images }) => `url(${images})`};
 `;
 
 export const SideRightContainer = styled.div`

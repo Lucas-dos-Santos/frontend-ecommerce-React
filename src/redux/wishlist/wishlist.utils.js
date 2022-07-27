@@ -3,12 +3,10 @@ export const addItemToWishlist = (wishItems, wishItemToAdd) => {
     (wishItem) => wishItem.id == wishItemToAdd.id,
   );
   if (existingWishItems) {
-    return wishItems.map((wishItem) => (wishItem.id === wishItemToAdd.id
-      ? { ...wishItem, quantity: wishItem.quantity + 1 }
-      : wishItem));
+    return [...wishItems];
   }
 
-  return [...wishItems, { ...wishItemToAdd, quantity: 1 }];
+  return [...wishItems, { ...wishItemToAdd }];
 };
 
 export const removeItemFromWishlist = (wishItems, wishItemToRemove) => {

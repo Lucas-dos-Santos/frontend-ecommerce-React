@@ -14,12 +14,12 @@ import {
 
 function CollectionItem({ item, addItem }) {
   const {
-    name, price, imageUrl,
+    name, price, images,
   } = item;
   return (
     <ScrollRevealContainer>
       <CollectionItemContainer to={`shop/${parameterize(name)}`}>
-        <BackgroundImage className="image" imageUrl={imageUrl} />
+        <BackgroundImage className="image" images={images[0]} />
         <CollectionFooterContainer>
           <NameContainer>{name}</NameContainer>
           <PriceContainer>{price}</PriceContainer>
