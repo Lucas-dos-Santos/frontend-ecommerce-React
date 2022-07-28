@@ -9,6 +9,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import WhatsApp from './components/WhatsApp';
 import WishListPage from './pages/WishListPage';
+import Footer from './components/Footer';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -37,6 +38,7 @@ function App() {
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      <Footer />
     </div>
   );
 }

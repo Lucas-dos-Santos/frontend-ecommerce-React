@@ -11,7 +11,8 @@ import ShopActionsType from './shop.types';
 
 function* fetchCollectionsAsync() {
   try {
-    yield put(fetchCollectionsSuccess([]));
+    const response = yield call(axios.get, 'products');
+    yield put(fetchCollectionsSuccess(response.data));
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message));
   }

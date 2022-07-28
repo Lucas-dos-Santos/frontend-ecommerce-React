@@ -16,7 +16,7 @@ function CheckoutItem({ cartItem }) {
   return (
     <div className="checkout-item">
       <div className="image-container">
-        <img src={images} alt="item" />
+        <img src={images[0]} alt="item" />
       </div>
       <span className="name">{name}</span>
       <span className="quantity">

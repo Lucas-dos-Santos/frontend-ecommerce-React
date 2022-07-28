@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import CustomButton from '../CustomButton';
 
 export const CollectionItemContainer = styled(Link)`
   width: 21vw;
@@ -33,21 +32,6 @@ export const CollectionItemContainer = styled(Link)`
         opacity: unset;
       }
     }
-  }
-`;
-
-export const AddButton = styled(CustomButton)`
-  width: 80%;
-  opacity: 0.7;
-  position: absolute;
-  top: 220px;
-  display: none;
-
-  @media screen and (max-width: 800px) {
-    display: block;
-    opacity: 0.9;
-    min-width: unset;
-    padding: 0 10px;
   }
 `;
 

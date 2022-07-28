@@ -6,7 +6,6 @@ import { ReactComponent as CartPlus } from '../../assets/cart-plus.svg';
 import { ReactComponent as WishPlus } from '../../assets/heart-plus.svg';
 import Breadcrumb from '../Breadcrumb';
 import * as S from './styles';
-import FormShipping from '../FormShipping';
 
 function Item({ item, addItem, addWishlist }) {
   const {
@@ -35,10 +34,9 @@ function Item({ item, addItem, addWishlist }) {
             <WishPlus />
           </S.AddButton>
           <S.AddButton onClick={() => addItem(item)}>
-            Adicionar ao carrinho
+            Adicionar à Sacola
             <CartPlus />
           </S.AddButton>
-          <FormShipping />
           <S.PriceContainer>{`R$ ${price.toFixed(2)}`}</S.PriceContainer>
           <span>{`3x de R$ ${(price / 3).toFixed(2)} (sem juros)`}</span>
         </S.SideRightContainer>

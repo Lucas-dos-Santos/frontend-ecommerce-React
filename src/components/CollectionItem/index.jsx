@@ -6,13 +6,12 @@ import parameterize from '../../services/utils';
 import {
   CollectionItemContainer,
   CollectionFooterContainer,
-  AddButton,
   BackgroundImage,
   NameContainer,
   PriceContainer,
 } from './style';
 
-function CollectionItem({ item, addItem }) {
+function CollectionItem({ item }) {
   const {
     name, price, images,
   } = item;
@@ -22,11 +21,8 @@ function CollectionItem({ item, addItem }) {
         <BackgroundImage className="image" images={images[0]} />
         <CollectionFooterContainer>
           <NameContainer>{name}</NameContainer>
-          <PriceContainer>{price}</PriceContainer>
+          <PriceContainer>{price.toFixed(2)}</PriceContainer>
         </CollectionFooterContainer>
-        <AddButton onClick={() => addItem(item)} inverted>
-          Add to cart
-        </AddButton>
       </CollectionItemContainer>
     </ScrollRevealContainer>
   );
