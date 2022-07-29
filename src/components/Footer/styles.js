@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const FooterContainer = styled.footer``;
+export const FooterContainer = styled.footer`
+  margin-top: 50px;
+`;
 
 export const InstitutionalSection = styled.section`
   display: flex;

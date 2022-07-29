@@ -12,6 +12,8 @@ import * as S from './styles';
 import { signOut } from '../../redux/user/user.actions';
 import { clearCart } from '../../redux/cart/cart.actions';
 import WishDropdown from '../WishListDropdown';
+import { ReactComponent as LogoInstagram } from '../../assets/instagram.svg';
+import { ReactComponent as LogoFacebook } from '../../assets/facebook.svg';
 
 function Header() {
   const currentUser = useSelector(selectCurrentUser);
@@ -27,6 +29,10 @@ function Header() {
 
   return (
     <S.HeaderContainer>
+      <S.SocialContainer>
+        <LogoInstagram />
+        <LogoFacebook />
+      </S.SocialContainer>
       <S.LogoContainer to="/">
         <Logo />
       </S.LogoContainer>

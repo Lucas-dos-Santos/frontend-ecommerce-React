@@ -5,7 +5,7 @@ export const HeaderContainer = styled.div`
   height: 70px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 30px;
 
   @media screen and (max-width: 800px) {
@@ -15,10 +15,23 @@ export const HeaderContainer = styled.div`
   }
 `;
 
+export const SocialContainer = styled.div`
+  width: 33%;
+  display: flex;
+  align-items: center;
+  svg {
+    width: 20px;
+    margin-right: 20px;
+  }
+`;
+
 export const LogoContainer = styled(Link)`
+  width: 33%;
   height: 100%;
-  width: 70px;
   padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (max-width: 800px) {
     width: 50px;
@@ -27,7 +40,7 @@ export const LogoContainer = styled(Link)`
 `;
 
 export const OptionsContainer = styled.div`
-  width: 50%;
+  width: 33%;
   height: 100%;
   display: flex;
   align-items: center;

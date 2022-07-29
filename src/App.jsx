@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import Header from './components/Header';
-import { GlobalStyle } from './global.styles';
+import { ContainerGlobal, GlobalStyle } from './global.styles';
 import Spinner from './components/Spinner';
 import ErrorBoundary from './components/ErrorBoundary';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -23,21 +23,23 @@ function App() {
       <ToastContainer autoClose={3000} className="toast-container" />
       <WhatsApp />
       <GlobalStyle />
-      <Header />
-      <Switch>
-        <ErrorBoundary>
-          <Suspense fallback={<Spinner />}>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/shop" component={ShopPage} />
-            <Route exact path="/checkout" component={CheckoutPage} />
-            <Route exact path="/wishlist" component={WishListPage} />
-            <Route
-              path="/signin"
-              render={() => (currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
-            />
-          </Suspense>
-        </ErrorBoundary>
-      </Switch>
+      <ContainerGlobal>
+        <Header />
+        <Switch>
+          <ErrorBoundary>
+            <Suspense fallback={<Spinner />}>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/shop" component={ShopPage} />
+              <Route exact path="/checkout" component={CheckoutPage} />
+              <Route exact path="/wishlist" component={WishListPage} />
+              <Route
+                path="/signin"
+                render={() => (currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
+              />
+            </Suspense>
+          </ErrorBoundary>
+        </Switch>
+      </ContainerGlobal>
       <Footer />
     </div>
   );
